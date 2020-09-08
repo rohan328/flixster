@@ -11,7 +11,7 @@ User can view a list of movies (title, poster image, and overview) currently pla
 ### App Walkthough GIF
 
 <img src="https://imgur.com/ZLgywOr.gif" width=250><br>
-<img src="https://imgur.com/e2zydyP.gif" width=250><br>
+<img src="https://imgur.com/e2zydyP.gif"><br>
 
 ### Open-source libraries used
 
