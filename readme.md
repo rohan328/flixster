@@ -2,8 +2,6 @@
 Flix is an app that allows users to browse movies from the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 ---
 
-## Flixster
-
 User can view a list of movies (title, poster image, and overview) currently playing in theaters from the Movie Database API.
 
 - [ ] (2pts) Views should be responsive for both landscape/portrait mode.
