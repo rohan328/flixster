@@ -6,16 +6,12 @@ User can view a list of movies (title, poster image, and overview) currently pla
 
 - Views are responsive for both landscape/portrait mode.
 - In portrait mode, the poster image, title, and movie overview is shown.
-- [ ] (1pt) In landscape mode, the rotated alternate layout should use the backdrop image instead and show the title and movie overview to the right of it.
-
-- [ ] (2pts) Display a nice default [placeholder graphic](https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#advanced-usage) for each image during loading
-- [ ] (2pts) Improved the user interface by experimenting with styling and coloring.
-- [ ] (2pts) For popular movies (i.e. a movie voted for more than 5 stars), the full backdrop image is displayed. Otherwise, a poster image, the movie title, and overview is listed. Use Heterogenous RecyclerViews and use different ViewHolder layout files for popular movies and less popular ones.
+- In landscape mode, the rotated alternate layout is uses the backdrop image instead and shows the title and movie overview to the right of it.
 
 ### App Walkthough GIF
-`TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
 
-<img src="YOUR_GIF_URL_HERE" width=250><br>
+<img src="https://imgur.com/ZLgywOr.gif" width=250><br>
+<img src="https://imgur.com/e2zydyP.gif" width=250><br>
 
 ### Open-source libraries used
 
