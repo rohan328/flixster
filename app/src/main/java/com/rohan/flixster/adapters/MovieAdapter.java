@@ -2,7 +2,9 @@ package com.rohan.flixster.adapters;
 
 import android.content.Context;
 import android.content.res.Configuration;
+
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,9 +97,15 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 imageURL = movie.getPosterPath();
-            } else imageURL = movie.getBackdropPath();
 
-            Glide.with(context).load(imageURL).into(ivPoster);
+            } else{
+                imageURL = movie.getBackdropPath();
+            }
+
+            int w = (int)(342 * context.getResources().getDisplayMetrics().density);
+            int h = (int)(192 * context.getResources().getDisplayMetrics().density);
+
+            Glide.with(context).load(imageURL).placeholder(R.mipmap.ic_launcher).override(w, h).into(ivPoster);
         }
     }
 
@@ -114,8 +122,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public void bind(Movie movie) {
             String imageURL;
             imageURL = movie.getBackdropPath();
+            int width = (int)context.getResources().getDisplayMetrics().widthPixels;;
 
-            Glide.with(context).load(imageURL).into(ivPosterPopular);
+            Glide.with(context).load(imageURL).override(width).placeholder(R.mipmap.ic_launcher).into(ivPosterPopular);
         }
     }
 }
