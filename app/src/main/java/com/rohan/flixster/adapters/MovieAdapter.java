@@ -35,12 +35,11 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //Log.d("MovieAdapter","onCreateViewHolder");
 
-        if(viewType==1){
-            View movieViewPopular = LayoutInflater.from(context).inflate(R.layout.item_movie_popular,parent,false);
+        if (viewType == 1) {
+            View movieViewPopular = LayoutInflater.from(context).inflate(R.layout.item_movie_popular, parent, false);
             return new ViewHolderPopular(movieViewPopular);
-        }
-        else{
-            View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie,parent,false);
+        } else {
+            View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
             return new ViewHolder(movieView);
         }
 
@@ -49,15 +48,14 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     //populates the view
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Log.d("MovieAdapter","onBindViewHolder" + position);
-        Movie movie= movies.get(position);
+        //Log.d("MovieAdapter", "onBindViewHolder" + position);
+        Movie movie = movies.get(position);
 
-        if(holder.getItemViewType()==1){
-            ViewHolderPopular vh = (ViewHolderPopular)holder;
+        if (holder.getItemViewType() == 1) {
+            ViewHolderPopular vh = (ViewHolderPopular) holder;
             vh.bind(movie);
-        }
-        else{
-            ViewHolder vh = (ViewHolder)holder;
+        } else {
+            ViewHolder vh = (ViewHolder) holder;
             vh.bind(movie);
         }
     }
@@ -71,14 +69,13 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     //returns the type of view to choose Popular or non popular
     @Override
     public int getItemViewType(int position) {
-        Log.d("MovieAdapter","position: "+ position + "rating " + movies.get(position).getRating());
-        if(movies.get(position).getRating()>7){
+        //Log.d("MovieAdapter", "position: " + position + "rating " + movies.get(position).getRating());
+        if (movies.get(position).getRating() > 7) {
             return 1;
-        }
-        else return 0;
+        } else return 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvTitle;
         TextView tvOverview;
@@ -86,9 +83,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle= itemView.findViewById(R.id.tvTitle);
-            tvOverview=itemView.findViewById(R.id.tvOverview);
-            ivPoster=itemView.findViewById(R.id.ivPoster);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvOverview = itemView.findViewById(R.id.tvOverview);
+            ivPoster = itemView.findViewById(R.id.ivPoster);
         }
 
         public void bind(Movie movie) {
@@ -96,28 +93,27 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvOverview.setText(movie.getOverview());
             String imageURL;
 
-            if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-                imageURL=movie.getPosterPath();
-            }
-            else imageURL=movie.getBackdropPath();
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                imageURL = movie.getPosterPath();
+            } else imageURL = movie.getBackdropPath();
 
             Glide.with(context).load(imageURL).into(ivPoster);
         }
     }
 
-    public class ViewHolderPopular extends RecyclerView.ViewHolder{
+    public class ViewHolderPopular extends RecyclerView.ViewHolder {
 
         ImageView ivPosterPopular;
 
-        public ViewHolderPopular(@NonNull View itemViewPopular){
+        public ViewHolderPopular(@NonNull View itemViewPopular) {
             super(itemViewPopular);
-            ivPosterPopular=itemView.findViewById(R.id.ivPosterPopular);
+            ivPosterPopular = itemView.findViewById(R.id.ivPosterPopular);
 
         }
 
-        public void bind(Movie movie){
+        public void bind(Movie movie) {
             String imageURL;
-            imageURL=movie.getBackdropPath();
+            imageURL = movie.getBackdropPath();
 
             Glide.with(context).load(imageURL).into(ivPosterPopular);
         }

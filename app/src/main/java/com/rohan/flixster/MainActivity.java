@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
-        movies= new ArrayList<>();
+        movies = new ArrayList<>();
 
-        final MovieAdapter movieAdapter = new MovieAdapter(this,movies);
+        final MovieAdapter movieAdapter = new MovieAdapter(this, movies);
 
         rvMovies.setAdapter(movieAdapter);
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 //Log.d(TAG,"onSuccess");
-                JSONObject jsonObject= json.jsonObject;
+                JSONObject jsonObject = json.jsonObject;
                 try {
                     JSONArray results = jsonObject.getJSONArray("results");
                     //Log.i(TAG, "Results"+results.toString());
