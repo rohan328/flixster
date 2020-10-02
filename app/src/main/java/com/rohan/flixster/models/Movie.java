@@ -5,10 +5,12 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
 
     String backdropPath;
@@ -16,6 +18,10 @@ public class Movie {
     String title;
     String overview;
     String rating;
+    int Id;
+
+    //Empty constructor needed by Parceler
+    public Movie(){}
 
     public Movie(JSONObject jsonObject) throws JSONException {
         posterPath = jsonObject.getString("poster_path");
@@ -23,7 +29,9 @@ public class Movie {
         overview = jsonObject.getString("overview");
         backdropPath = jsonObject.getString("backdrop_path");
         rating = jsonObject.getString("vote_average");
+        Id = jsonObject.getInt("id");
     }
+
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
         List<Movie> movies = new ArrayList<>();
@@ -54,5 +62,9 @@ public class Movie {
     public double getRating() {
         //Log.d("MOVIE","get rating"+Double.parseDouble(rating));
         return Double.parseDouble(rating);
+    }
+
+    public int getId() {
+        return Id;
     }
 }
