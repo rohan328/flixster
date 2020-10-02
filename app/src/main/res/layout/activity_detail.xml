@@ -10,11 +10,13 @@
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/player"
+        android:transitionName="image"
         android:layout_width="match_parent"
         android:layout_height="250dp" />
 
     <TextView
         android:id="@+id/tvTitle"
+        android:transitionName="title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/videoView"
@@ -37,6 +39,7 @@
 
     <TextView
         android:id="@+id/tvOverview"
+        android:transitionName="overview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

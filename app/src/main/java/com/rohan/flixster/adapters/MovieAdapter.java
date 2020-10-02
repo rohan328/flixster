@@ -1,5 +1,6 @@
 package com.rohan.flixster.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,9 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.target.Target;
 import com.rohan.flixster.DetailActivity;
 import com.rohan.flixster.R;
@@ -115,7 +120,11 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             int w = (int)(342 * context.getResources().getDisplayMetrics().density);
             int h = (int)(192 * context.getResources().getDisplayMetrics().density);
 
-            Glide.with(context).load(imageURL).placeholder(R.mipmap.ic_launcher).override(w, h).into(ivPoster);
+            Glide.with(context)
+                    .load(imageURL)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .override(w,h)
+                    .into(ivPoster);
 
             movieContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -123,7 +132,13 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("movie", Parcels.wrap(movie));
 
-                    context.startActivity(i);
+                    Pair<View, String> p1 = Pair.create((View)tvTitle, "title");
+                    Pair<View, String> p2 = Pair.create((View)tvOverview, "overview");
+                    Pair<View, String> p3 = Pair.create((View)ivPoster, "image");
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context, p1,p2,p3);
+
+                    context.startActivity(i,options.toBundle());
                 }
             });
         }
@@ -146,7 +161,11 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             imageURL = movie.getBackdropPath();
             int width = (int)context.getResources().getDisplayMetrics().widthPixels;;
 
-            Glide.with(context).load(imageURL).override(width).placeholder(R.mipmap.ic_launcher).into(ivPosterPopular);
+            Glide.with(context)
+                    .load(imageURL)
+                    .override(width)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(ivPosterPopular);
 
             movieContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -154,8 +173,11 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("movie", Parcels.wrap(movie));
 
+                    ActivityOptionsCompat options = ActivityOptionsCompat
+                            .makeSceneTransitionAnimation((Activity)context, (View)ivPosterPopular, "image");
 
-                    context.startActivity(i);
+
+                    context.startActivity(i, options.toBundle());
                 }
             });
         }
